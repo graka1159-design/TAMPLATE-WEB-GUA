@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login 10</title>
+  	<title>STRX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -13,11 +13,12 @@
 
 	</head>
 	<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+	<div id="alertBox"></div>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login #10</h2>
+					<h2 class="heading-section">STRX</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -26,7 +27,7 @@
 		      	<h3 class="mb-4 text-center">Have an account?</h3>
 		      	<form action="#" class="signin-form">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Username" required>
+		      			<input type="text" id="loginUsername" class="form-control" placeholder="Username" required>
 		      		</div>
 	            <div class="form-group">
 	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
@@ -62,13 +63,6 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
-
-<input type="text" id="loginUsername" class="form-control" placeholder="Username" required>
-
-<script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
 
     <script>
         document.querySelector('.signin-form').addEventListener('submit', function (e) {
