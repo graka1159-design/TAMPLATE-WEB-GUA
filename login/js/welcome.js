@@ -4,7 +4,7 @@ function goLogin() {
 
 function logout() {
     localStorage.removeItem("username");
-    location.reload();
+    window.location.href = "../index.html";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
