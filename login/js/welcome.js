@@ -4,7 +4,11 @@ function goLogin() {
 
 function logout() {
     localStorage.removeItem("username");
-    window.location.href = "../index.html";
+    if (window.location.pathname.includes("login/")) {
+        window.location.href = "../index.html";
+    } else {
+        location.reload(); 
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
