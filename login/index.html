@@ -65,12 +65,33 @@
   <script src="js/main.js"></script>
 
     <script>
-        document.querySelector('.signin-form').addEventListener('submit', function (e) {
-            e.preventDefault(); 
-            const username = document.getElementById('loginUsername').value;
-            
-            localStorage.setItem("username", username);
-            window.location.href = "../index.html";
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const userIn = document.getElementById('loginUsername').value;
+            const passIn = document.getElementById('password-field').value;
+            const alertBox = document.getElementById('alertBox');
+
+            alertBox.innerHTML = '<div id="message" style="background: orange;">Mengecek akun...</div>';
+
+            try {
+                const res = await fetch("https://herisusanta.my.id/javalogin/api/auth.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `action=login&username=${encodeURIComponent(userIn)}&password=${encodeURIComponent(passIn)}`
+                });
+
+                const data = await res.json();
+
+                if (data.status === "success") {
+                    localStorage.setItem("username", userIn);
+                    alertBox.innerHTML = '<div id="message" style="background: #28a745;">Login Berhasil!</div>';
+                    setTimeout(() => window.location.href = "../index.html", 1000);
+                } else {
+                    alertBox.innerHTML = `<div id="message" style="background: #ff4e4e;">${data.message || "Akun tidak ditemukan!"}</div>`;
+                }
+            } catch (err) {
+                alertBox.innerHTML = '<div id="message" style="background: #ff4e4e;">Gagal terhubung ke server!</div>';
+            }
         });
     </script>
 	</body>
