@@ -65,35 +65,45 @@
   <script src="js/main.js"></script>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const userIn = document.getElementById('loginUsername').value;
-            const passIn = document.getElementById('password-field').value;
-            const alertBox = document.getElementById('alertBox');
+    document.querySelector('.signin-form').addEventListener('submit', async function (e) {
+        e.preventDefault(); 
+        
+        const userField = document.getElementById('loginUsername'); // Ambil element-nya
+        const passField = document.getElementById('password-field');
+        const alertBox = document.getElementById('alertBox');
 
-            alertBox.innerHTML = '<div id="message" style="background: orange;">Mengecek akun...</div>';
+        // Munculin loading biar gak bingung
+        alertBox.innerHTML = '<div id="message" style="background: orange;">Mengecek...</div>';
 
-            try {
-                const res = await fetch("https://herisusanta.my.id/javalogin/api/auth.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: `action=login&username=${encodeURIComponent(userIn)}&password=${encodeURIComponent(passIn)}`
-                });
+        try {
+            const res = await fetch("https://herisusanta.my.id/javalogin/api/auth.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `action=login&username=${encodeURIComponent(userField.value)}&password=${encodeURIComponent(passField.value)}`
+            });
 
-                const data = await res.json();
+            const data = await res.json();
 
-                if (data.status === "success") {
-                    localStorage.setItem("username", userIn);
-                    alertBox.innerHTML = '<div id="message" style="background: #28a745;">Login Berhasil!</div>';
-                    setTimeout(() => window.location.href = "../index.html", 1000);
-                } else {
-                    alertBox.innerHTML = `<div id="message" style="background: #ff4e4e;">${data.message || "Akun tidak ditemukan!"}</div>`;
-                }
-            } catch (err) {
-                alertBox.innerHTML = '<div id="message" style="background: #ff4e4e;">Gagal terhubung ke server!</div>';
+            if (data.status === "success") {
+                localStorage.setItem("username", userField.value);
+                alertBox.innerHTML = '<div id="message" style="background: #28a745;">Login Berhasil!</div>';
+                setTimeout(() => window.location.href = "../index.html", 1000);
+            } else {
+                // INI KUNCINYA: Alert Merah & Nama Dihapus
+                alertBox.innerHTML = `<div id="message" style="background: #ff4e4e;">Gagal: Akun Tidak Terdaftar!</div>`;
+                
+                // Kosongin lagi kotaknya biar bersih
+                userField.value = ""; 
+                passField.value = "";
+                
+                // Alert hilang otomatis setelah 3 detik
+                setTimeout(() => { alertBox.innerHTML = ""; }, 3000);
             }
-        });
-    </script>
+        } catch (error) {
+            alertBox.innerHTML = '<div id="message" style="background: #ff4e4e;">Server Error!</div>';
+        }
+    });
+</script>
 	</body>
 </html>
 
