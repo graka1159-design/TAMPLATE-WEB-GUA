@@ -64,6 +64,7 @@
                         </li>
                     </ul>
                 </div>
+                
                 <div class="navbar align-self-center d-flex align-items-center">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
@@ -81,7 +82,7 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                     
+                    
                     <div id="authArea" class="d-flex align-items-center border-start ps-3" style="min-height: 24px;">
                         <a class="nav-icon position-relative text-decoration-none" href="login/index.html">
                             <i class="fa fa-fw fa-user text-dark"></i>
@@ -128,7 +129,7 @@
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade">
-            </table>
+            </iframe>
         </div>
     </div>
     <div class="container py-5">
@@ -225,55 +226,4 @@
                 </div>
                 <div class="col-auto">
                     <label class="sr-only" for="subscribeEmail">Alamat Email </label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Berlangganan</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright © 2026 STRX | Designed by STRX
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    
-    <script>
-        function logout() {
-            localStorage.removeItem("username");
-            location.reload();
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const user = localStorage.getItem("username");
-            const authArea = document.getElementById("authArea");
-
-            if (user && authArea) {
-                authArea.innerHTML = `
-                    <span class="text-dark me-2 small" style="font-weight: 700; white-space: nowrap;">Halo, ${user}</span>
-                    <a class="nav-icon position-relative text-decoration-none me-3" href="#">
-                        <i class="fa fa-fw fa-user text-success"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="javascript:void(0)" onclick="logout()" title="Keluar">
-                        <i class="fa fa-fw fa-sign-out-alt text-danger"></i>
-                    </a>
-                `;
-            }
-        });
-    </script>
-</body>
-
-</html>
+                    <div class="input-group mb-
