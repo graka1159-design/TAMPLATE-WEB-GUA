@@ -4,7 +4,7 @@
     <title>STRX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/All logo.png">
+    <link class="apple-touch-icon" href="assets/img/All logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/All logo.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
@@ -25,15 +25,18 @@
                         <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <a class="nav-icon d-none d-lg-inline" href="#"><i class="fa fa-fw fa-search text-dark mr-2"></i></a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                
+                <div class="navbar align-self-center d-flex align-items-center">
+                    <a class="nav-icon d-none d-lg-inline me-3" href="#"><i class="fa fa-fw fa-search text-dark"></i></a>
+                    
+                    <a class="nav-icon position-relative text-decoration-none me-4" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <div id="authArea" class="d-inline">
+                    
+                    <div id="authArea" class="d-flex align-items-center border-start ps-3" style="min-height: 24px;">
                         <a class="nav-icon position-relative text-decoration-none" href="login/index.html">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                            <i class="fa fa-fw fa-user text-dark"></i>
                         </a>
                     </div>
                 </div>
@@ -49,6 +52,7 @@
             <div class="carousel-item">
                 <div class="container"><div class="row p-5"><div class="mx-auto col-md-8 col-lg-6 order-lg-last"><img class="img-fluid" src="./assets/img/Nike glasse.png"></div><div class="col-lg-6 mb-0 d-flex align-items-center"><div class="text-align-left"><h1 class="h1">Nike Windshield</h1><p>Pelindung mata maksimal.</p></div></div></div></div>
             </div>
+            
             <div class="carousel-item">
                 <div class="container-fluid px-md-5 py-5">
                     <div class="row justify-content-center">
@@ -62,13 +66,47 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> </div>
         <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" data-bs-slide="prev"><i class="fas fa-chevron-left text-dark"></i></a>
         <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" data-bs-slide="next"><i class="fas fa-chevron-right text-dark"></i></a>
     </div>
 
+    <section class="container py-5" style="margin-top: 50px;">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Kategori Pilihan</h1>
+                <p>Jelajahi koleksi perlengkapan olahraga terbaik kami.</p>
+            </div>
+        </div>
+    </section>
+
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("username");
+            location.reload();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const user = localStorage.getItem("username");
+            const authArea = document.getElementById("authArea");
+
+            if (user && authArea) {
+                authArea.innerHTML = `
+                    <span class="text-dark me-2 small" style="font-weight: 600; white-space: nowrap;">Halo, ${user}</span>
+                    <a class="nav-icon position-relative text-decoration-none me-3" href="#">
+                        <i class="fa fa-fw fa-user text-success"></i>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="javascript:void(0)" onclick="logout()" title="Keluar">
+                        <i class="fa fa-fw fa-sign-out-alt text-danger"></i>
+                    </a>
+                `;
+            }
+        });
+    </script>
 </body>
 </html>
